@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Portofolio Profesional</title>
+  <link rel="icon" id="site-favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ctext x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='900' text-anchor='middle' fill='%23000000'%3EP%3C/text%3E%3C/svg%3E">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -233,8 +234,7 @@
 
               <!-- Jobstreet Button -->
               <a id="hero-link-jobstreet" href="#" target="_blank" class="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/90 hover:bg-zinc-800 text-white font-medium text-xs sm:text-sm transition-all flex items-center gap-2">
-                <img src="https://www.google.com/s2/favicons?domain=jobstreet.co.id&sz=64" alt="" class="w-4 h-4 rounded-sm bg-white p-px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                <svg class="w-4 h-4 text-zinc-300" style="display:none" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-4 h-4 text-zinc-300" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                 </svg>
                 <span>Jobstreet</span>
@@ -429,8 +429,7 @@
           <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-zinc-700 transition-all">
             <div>
               <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center mb-3">
-                <img src="https://www.google.com/s2/favicons?domain=jobstreet.co.id&sz=64" alt="" class="w-6 h-6" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                <svg class="w-5 h-5" style="display:none" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                 </svg>
               </div>
@@ -1075,6 +1074,16 @@
       showToast('Alamat email ' + email + ' berhasil disalin!');
     }
 
+    // Ikon tab browser mengikuti logo web (kotak putih + huruf inisial)
+    function setSiteFavicon(letter) {
+      const link = document.getElementById('site-favicon');
+      if (!link) return;
+      const ch = String(letter || 'P').charAt(0).toUpperCase()
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#ffffff'/><text x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='900' text-anchor='middle' fill='#000000'>" + ch + "</text></svg>";
+      link.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+    }
+
     function renderPublicView() {
       const s = portfolioData.settings || {};
       const name = (s.name || s.Name || '').trim();
@@ -1089,6 +1098,7 @@
         setText('page-title', name + ' | Portofolio');
         setText('nav-brand-name', name.toUpperCase());
         setText('nav-initials', name.charAt(0).toUpperCase());
+        setSiteFavicon(name.charAt(0));
         setText('footer-copy-name', name);
         setText('hero-name', name);
       } else {
@@ -1096,6 +1106,7 @@
         setText('page-title', 'Portofolio Pribadi');
         setText('nav-brand-name', 'PORTOFOLIO');
         setText('nav-initials', 'P');
+        setSiteFavicon('P');
         setText('footer-copy-name', 'Portofolio');
         setText('hero-name', 'Pemilik Portofolio');
       }
