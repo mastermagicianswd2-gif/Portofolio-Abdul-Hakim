@@ -233,7 +233,8 @@
 
               <!-- Jobstreet Button -->
               <a id="hero-link-jobstreet" href="#" target="_blank" class="px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/90 hover:bg-zinc-800 text-white font-medium text-xs sm:text-sm transition-all flex items-center gap-2">
-                <svg class="w-4 h-4 text-zinc-300" viewBox="0 0 24 24" fill="currentColor">
+                <img src="https://www.google.com/s2/favicons?domain=jobstreet.co.id&sz=64" alt="" class="w-4 h-4 rounded-sm bg-white p-px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <svg class="w-4 h-4 text-zinc-300" style="display:none" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                 </svg>
                 <span>Jobstreet</span>
@@ -428,7 +429,8 @@
           <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/60 flex flex-col justify-between hover:border-zinc-700 transition-all">
             <div>
               <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center mb-3">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <img src="https://www.google.com/s2/favicons?domain=jobstreet.co.id&sz=64" alt="" class="w-6 h-6" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <svg class="w-5 h-5" style="display:none" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                 </svg>
               </div>
@@ -1292,20 +1294,6 @@
       `).join('');
     }
 
-    // Ikon logo website otomatis (favicon) dari alamat website proyek
-    function getSiteFavicon(url) {
-      if (!url) return '';
-      try {
-        let u = String(url).trim();
-        if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
-        const host = new URL(u).hostname;
-        if (!host) return '';
-        return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(host) + '&sz=64';
-      } catch (e) {
-        return '';
-      }
-    }
-
     // Geser baris konten ke kiri / kanan dengan tombol panah (desktop)
     function scrollRow(id, dir) {
       const el = document.getElementById(id);
@@ -1489,8 +1477,7 @@
               ${proj.liveUrl ? `
                 <a href="${encodeURI(proj.liveUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-zinc-300 transition-colors">
                   Kunjungi Website
-                  ${getSiteFavicon(proj.liveUrl) ? `<img src="${getSiteFavicon(proj.liveUrl)}" alt="" class="w-4 h-4 rounded-sm bg-white/90 p-px" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">` : ''}
-                  <svg class="w-3.5 h-3.5" style="${getSiteFavicon(proj.liveUrl) ? 'display:none' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
               ` : ''}
               ${proj.githubUrl ? `
