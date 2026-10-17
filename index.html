@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Portofolio Profesional</title>
+  <script>
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light'); } catch (e) {}
+  </script>
   <link rel="icon" id="site-favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ctext x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='900' text-anchor='middle' fill='%23000000'%3EP%3C/text%3E%3C/svg%3E">
   
   <script src="https://cdn.tailwindcss.com"></script>
@@ -147,6 +150,71 @@
     .hscroll::-webkit-scrollbar { height: 6px; }
     .hscroll::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 9999px; }
     .hscroll::-webkit-scrollbar-track { background: transparent; }
+
+    /* ===== MODE TERANG (aktif jika <html class="light">; mode gelap tetap tampilan asli) ===== */
+    html.light { color-scheme: light; }
+    html.light body { background-color: #fafafa; color: #18181b; }
+    html.light ::selection { background: #18181b; color: #ffffff; }
+    html.light .noise-bg { background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 0); }
+    html.light .glass-nav { background: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+    html.light .custom-scrollbar::-webkit-scrollbar-track { background: #f4f4f5; }
+    html.light .custom-scrollbar::-webkit-scrollbar-thumb { background: #d4d4d8; }
+    html.light .hscroll { scrollbar-color: #d4d4d8 transparent; }
+    html.light .hscroll::-webkit-scrollbar-thumb { background: #d4d4d8; }
+    html.light .skeleton-loading { background: #e4e4e7; }
+
+    /* Teks */
+    html.light .text-white { color: #09090b; }
+    html.light .text-zinc-100, html.light .text-zinc-200 { color: #18181b; }
+    html.light .text-zinc-300 { color: #3f3f46; }
+    html.light .text-zinc-400 { color: #52525b; }
+    html.light .text-zinc-500, html.light .text-zinc-600 { color: #71717a; }
+    html.light .text-black { color: #fafafa; }
+    html.light .hover\:text-white:hover { color: #000000; }
+    html.light .hover\:text-zinc-200:hover, html.light .hover\:text-zinc-300:hover,
+    html.light .group:hover .group-hover\:text-zinc-200 { color: #27272a; }
+    html.light .text-rose-300, html.light .text-rose-400 { color: #be123c; }
+
+    /* Latar */
+    html.light .bg-white { background-color: #18181b; }
+    html.light .hover\:bg-zinc-200:hover { background-color: #3f3f46; }
+    html.light .bg-zinc-950 { background-color: #ffffff; }
+    html.light .bg-zinc-900 { background-color: #f4f4f5; }
+    html.light .bg-zinc-800 { background-color: #e4e4e7; }
+    html.light .hover\:bg-zinc-800:hover { background-color: #e4e4e7; }
+    html.light .hover\:bg-zinc-700:hover { background-color: #d4d4d8; }
+    html.light .bg-zinc-900\/30 { background-color: rgba(244, 244, 245, 0.7); }
+    html.light .bg-zinc-900\/60 { background-color: rgba(244, 244, 245, 0.85); }
+    html.light .bg-zinc-900\/90, html.light .bg-zinc-900\/95 { background-color: rgba(255, 255, 255, 0.96); }
+    html.light .bg-zinc-950\/30 { background-color: rgba(255, 255, 255, 0.5); }
+    html.light .bg-zinc-950\/50, html.light .bg-zinc-950\/60 { background-color: rgba(255, 255, 255, 0.7); }
+    html.light .bg-zinc-950\/70 { background-color: rgba(255, 255, 255, 0.8); }
+    html.light .bg-black { background-color: #fafafa; }
+    html.light footer.bg-black { background-color: #f4f4f5; }
+    html.light .bg-black\/80 { background-color: rgba(255, 255, 255, 0.88); }
+    html.light .bg-rose-950, html.light .bg-rose-950\/90 { background-color: #ffe4e6; }
+
+    /* Garis tepi */
+    html.light .border-zinc-800, html.light .border-zinc-800\/80, html.light .border-zinc-800\/60 { border-color: #e4e4e7; }
+    html.light .border-zinc-900 { border-color: #efeff1; }
+    html.light .border-zinc-700 { border-color: #d4d4d8; }
+    html.light .border-zinc-600 { border-color: #a1a1aa; }
+    html.light .hover\:border-zinc-700:hover { border-color: #a1a1aa; }
+    html.light .hover\:border-zinc-500:hover { border-color: #71717a; }
+    html.light .group:hover .group-hover\:border-white { border-color: #000000; }
+    html.light .border-rose-800, html.light .border-rose-800\/80 { border-color: #fda4af; }
+
+    /* Foto sampul & efek cahaya foto profil */
+    html.light .bg-black\/45 { background-color: rgba(255, 255, 255, 0.35); }
+    html.light #hero-cover-container .bg-gradient-to-t { background-image: linear-gradient(to top, #fafafa, rgba(250, 250, 250, 0.2), rgba(255, 255, 255, 0.3)); }
+    html.light #photo-glow { background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(113, 113, 122, 0.35)); }
+
+    /* Lapisan gelap di atas gambar tetap gelap dengan teks putih */
+    html.light .text-white.bg-black\/50 { background-color: rgba(0, 0, 0, 0.5); color: #ffffff; }
+
+    /* Tombol mode gelap/terang */
+    html.light #theme-icon-sun { display: none; }
+    html:not(.light) #theme-icon-moon { display: none; }
   </style>
 </head>
 <body class="noise-bg min-h-screen flex flex-col relative text-zinc-100 antialiased">
@@ -179,6 +247,10 @@
       </nav>
 
       <div class="flex items-center gap-2.5">
+        <button type="button" id="theme-toggle" onclick="toggleTheme()" aria-label="Ganti mode gelap atau terang" title="Mode gelap / terang" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-500 flex items-center justify-center transition-all active:scale-95">
+          <svg id="theme-icon-sun" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="theme-icon-moon" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
         <a href="#contact" class="px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl bg-white text-black text-xs sm:text-sm font-semibold hover:bg-zinc-200 transition-all active:scale-95 shadow-sm">
           Kontak Saya
         </a>
@@ -1090,6 +1162,12 @@
       if (iframe) iframe.src = '';
     }
 
+
+    // Ganti mode gelap / terang (pilihan diingat di browser)
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.toggle('light');
+      try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+    }
 
     window.addEventListener('load', () => {
       loadInitialData();
